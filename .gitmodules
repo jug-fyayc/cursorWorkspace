@@ -1,0 +1,3 @@
+[submodule "step-cursor-workspace"]
+	path = step-cursor-workspace
+	url = https://github.com/foryouandyourcustomers/step-cursor-workspace
