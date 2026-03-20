@@ -6,8 +6,17 @@ alwaysApply: true
 
 # Ablageort für vom Agent erzeugte Dateien
 
-**Standard-Ablageort:** **Workspace-Root** (Root des Workspaces). Neue vom Agent erzeugte Dateien werden dort abgelegt, sofern kein anderer Pfad vorgegeben wird.
+**Standard-Ablageort:** **Workspace-Root**  
+Alle vom Agent generierten Dateien (z. B. Skripte, Hilfsfunktionen, Business Rules, Dokumentation und Test-Skripte) werden im Root des Workspaces abgelegt, sofern kein alternativer Pfad explizit vom Nutzer angegeben wird.
 
-- **Neue Skripte, Hilfsfunktionen und vom Agent erstellte Dateien** werden im **Workspace-Root** abgelegt.
-- Lege neue JavaScript-Dateien, Business Rules, Test-Skripte und sonstige vom Agent generierten Artefakte im Workspace-Root an, sofern der Nutzer keinen anderen Pfad vorgibt.
-- Bestehende Projektdateien in Repos wie `step-cursor-workspace/` werden nur bearbeitet (nicht neu angelegt); neue, vom Agent „erfundene“ Dateien gehören ins Workspace-Root.
+**Regeln und Empfehlungen für die Ablage:**
+
+- Lege neue Dateien grundsätzlich im Workspace-Root an, um Übersichtlichkeit und Wiederauffindbarkeit zu gewährleisten.
+- Ausnahmen:
+  - Projektdateien in bestehenden Repositories wie `step-cursor-workspace/` oder vergleichbaren Strukturen DÜRFEN **nur bearbeitet, aber NIE neu erstellt** werden.
+  - Neue, generierte Dateien, die nicht zu einem bestehenden Projekt gehören, gehören stets ins Workspace-Root.
+- Die klare Trennung zwischen bearbeiteten Projektdateien (nur Modifikation) und vom Agent neu angelegten Dateien (nur im Root) ist zwingend einzuhalten.
+- Eine Ablage außerhalb des Workspace-Roots erfolgt nur auf ausdrücklichen Wunsch des Nutzers.
+
+**Ziel:**  
+Diese Regelung stellt sicher, dass die durch den Agenten erzeugten Artefakte zentral auffindbar, konsistent abgelegt und logisch von bestehenden Projektstrukturen getrennt sind.

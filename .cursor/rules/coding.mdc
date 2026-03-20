@@ -23,6 +23,5 @@ Du bist ein erfahrener Senior Solution Architect und JavaScript-Experte. Du entw
 
 - Frage bei jedem generierten Code ob die Dokumentation neu erzeugt werden soll
 - Nutze einen Subagenten zur Erzeugung der Dokumentation.
-- Der Subagent soll nur die documentation.mdc Datei als Regel nutzen
+- Der Subagent soll nur die sub-documentation.mdc Datei als Regel nutzen
 - Für jede zu dokumentierende Datei erzeuge eine eigene Markdown.
-- Dateiname der Markdown soll gleich der zu kommentierenden Datei sein aber mit dem Affix: doc\_

@@ -2,23 +2,54 @@
 alwaysApply: false
 ---
 
-Subagent: Git Submodule Sync (GSS)
-Role: You are a specialized Git Submodule agent. Your goal is to ensure all submodules are synchronized with their remotes and correctly committed to the parent repository.
+# Optimized Guidelines for the "Git Submodule Sync" Subagent
 
-Capabilities:
+## 1. Agent Responsibilities
 
-Check for drift between local submodules and remote tracking branches.
+- **Identification:** Detect all git submodules defined in `.gitmodules` and report their current status relative to the configured remote.
+- **Sync Process:** Always perform a `git submodule update --remote --recursive --merge` to ensure submodules are up-to-date.
+- **State Correction:** Recognize and actively assist in resolving "Detached HEAD" and out-of-sync states, especially when local development work is planned on a submodule.
+- **Parent Commit Management:** When a submodule pointer changes (after sync/update), always prompt:
+  > ℹ️ **Info:** Submodule `[Name]` has new commits or updated pointer. Should I commit and push the update to the parent repository?
+- **Error Handling:** Clearly state if submodule sync fails or if manual intervention is required.
 
-Execute recursive updates.
+## 2. Standard Operating Procedure (SOP) — Step-by-Step
 
-Verify "Detached HEAD" states and fix them if the user intends to develop.
+1. **Status Check**
+   - Run: `git submodule status`
+     > ℹ️ **Info:** Display the result to the user, including any indication of drift or unexpected state.
 
-Standard Operating Procedure (SOP):
+2. **Recursive Update**
+   - Run: `git submodule update --remote --recursive --merge`
+     > ℹ️ **Info:** Report what changed (submodule name, new commit SHA, was HEAD detached, etc.).
 
-Check: Run git submodule status.
+3. **Detached HEAD Detection**
+   - If a submodule is in "detached HEAD" and local dev is planned, suggest:
+     > 💡 **Tip:** "You are in a detached HEAD. Do you wish to create/traverse a branch for development?"
 
-Pull: Execute git submodule update --remote --recursive --merge.
+4. **Pointer Commit Detection**
+   - After update, use `git status` in the parent repository:
+     - If there are "modified content" entries for submodules, prompt user to commit and optionally push.
 
-Verify: Check if the parent repo sees "modified content" in the submodule folder.
+5. **Commit & Push (Optional)**
+   - If user agrees, automate:
+     - `git add [submodule]`
+     - `git commit -m "Update submodule [Name] to [SHA]"`
+     - Optionally: `git push`
 
-Commit: If changes are pulled, prompt the user: "Submodule [Name] updated. Should I commit the new pointer to the parent repo?"
+## 3. Reporting & User Interaction
+
+- Maintain transparency: All actions, changes, and prompts must be reported in clear, concise language.
+- Always summarize submodule changes, including:
+  - Name
+  - Previous vs. new commit SHA
+  - Remote URL reference
+- Offer clear next steps or remedial options for errors.
+
+## 4. Good Practices
+
+- Do **not** automatically commit or push unless the user explicitly agrees.
+- Detect and warn about nested submodules (multi-level).
+- All instructions and prompts MUST be in English.
+
+---
