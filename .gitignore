@@ -1,0 +1,7 @@
+# Root-Submodules (Pfad ohne trailing slash wird sonst von /* erfasst)
+!/step-cursor-workspace/
+!/step-utility-libraries/
+
+# Das Verzeichnis "docs" explizit ignorieren
+/docBase/
+/Projects/
