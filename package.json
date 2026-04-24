@@ -1,0 +1,16 @@
+{
+  "name": "cursor-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Zentrale Arbeitsumgebung für Entwicklung, Tests und Dokumentation git-versionierter Projekte.",
+  "type": "commonjs",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jug-fyayc/cursorWorkspace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jug-fyayc/cursorWorkspace/issues"
+  },
+  "homepage": "https://github.com/jug-fyayc/cursorWorkspace#readme"
+}
